@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+            text-decoration:none;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #0056b3, #007bff);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+            color: yellow;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            text-align: center;
+            gap: 50px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+        .text-content {
+            max-width: 50%;
+            text-align: left;
+        }
+        .text-content h1 {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #0056b3;
+        }
+        .text-content p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1.2em;
+            color: white;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #ff9800;
+            transform: scale(1.05);
+        }
+        .image-content img {
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .features {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            gap: 40px;
+            padding: 50px 20px;
+            background-color: #fff;
+            flex-wrap: wrap;
+        }
+        .feature-box {
+            background: #f8f9fa;
+            padding: 20px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        .feature-box:hover {
+            background: #007bff;
+            color: white;
+            transform: scale(1.05);
+        }
+        .feature-box i {
+            font-size: 40px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .feature-box:hover i {
+            color: white;
+        }
+        
+        .footer {
+            background: linear-gradient(to right, #0056b3, #007bff);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto;
+            font-size: 0.9em;
+        }
+        
+.chatbot-dancing {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 3em;
+    cursor: pointer;
+    animation: dance 1s infinite alternate ease-in-out;
+}
+
+
+@keyframes dance {
+    0% { transform: rotate(10deg) translateY(5px); }
+    50% { transform: rotate(-10deg) translateY(-5px); }
+    100% { transform: rotate(10deg) translateY(5px); }
+}
+
+
+.chatbot-dancing:hover {
+    animation: shake 0.5s infinite alternate ease-in-out;
+}
+
+
+@keyframes shake {
+    0% { transform: rotate(15deg); }
+    50% { transform: rotate(-15deg); }
+    100% { transform: rotate(15deg); }
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span style="font-size: 1.5em; font-weight: bold;">Career Guide</span>
+        <div class="nav-links">
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('signup') }}">Sign Up</a>
+           
+            <a href="{{ url_for('explore')}}">Explore</a>
+            
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+    
+    
+    <div class="container">
+        <div class="text-content">
+            <h1>AI-Based Career Guidance Assistant</h1>
+            <p>Your personalized career assistant to help you make informed career decisions.
+               Explore various career paths, required skills, and the best roadmap to success.</p>
+            <a href="{{ url_for('index') }}" class="btn">Get Started</a>
+        </div>
+        <div class="image-content">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.nw0VLtkf8dCzv57C0Wp24QHaD4&pid=Api&P=0&h=180" alt="Career Guidance">
+        </div>
+    </div>
+
+    
+    <div class="features">
+        <div class="feature-box">
+            <i class="fas fa-book"></i>
+             <a href="{{ url_for('courses') }}"><h3>Explore Courses</h3></a>
+            <p>Find the best courses to develop your skills.</p>
+        </div>
+        <div class="feature-box">
+            <i class="fas fa-briefcase"></i>
+            <h3>Career Paths</h3>
+            <p>Discover career paths suited to your interests.</p>
+        </div>
+        <div class="feature-box">
+            <i class="fas fa-comments"></i>
+            <h3>Expert Advice</h3>
+            <p>Get insights from career experts.</p>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="chatbot-dancing" onclick="openChatbotPage()">
+    <a href="{{ url_for('chatbot') }}">🤖</a>
+</div>    
+   
+    <footer class="footer">
+        <p>&copy; 2025 AI Career Guidance. All rights reserved.</p>
+    </footer>
+
+
+
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous">
+        function openChatbotPage() {
+    window.location.href = "chatbot.html";
+    }
+    </script>
+</body>
+</html>

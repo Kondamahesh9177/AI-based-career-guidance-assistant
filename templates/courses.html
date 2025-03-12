@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses Catalog</title>
+    <link rel="stylesheet" href="courses.css">
+    <link rel="stylesheet" href="couses.js">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    text-align: center;
+    background: #007bff;
+    color: white;
+    padding: 15px;
+    font-size: 24px;
+}
+
+.subheading {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    padding: 10px;
+    background: #ddd;
+    text-align: center;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.course-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.course-card:hover {
+    transform: scale(1.05);
+}
+
+.course-card img {
+    width: 100%;
+    height: 120px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.course-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.course-info {
+    font-size: 14px;
+    color:#555;
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Explore Courses</h1>
+    </header>
+
+    <div id="courses-container"></div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const coursesData = {
+        "Engineering": [
+            { name: "Computer Science", duration: "4 Years",  image: "https://tse4.mm.bing.net/th?id=OIP.2Y0B9iqNwcbQCL27oJgmAwHaEK&pid=Api&P=0&h=180" },
+            { name: "Mechanical", duration: "4 Years",  image: "https://tse1.mm.bing.net/th?id=OIP.qcsqJ_Ow7CKXHzWixrz8bgHaD6&pid=Api&P=0&h=180" },
+            { name: "Electrical", duration: "4 Years",  image: "https://tse4.mm.bing.net/th?id=OIP.g9k0NEsdz4RYewYlTakUBAHaE8&pid=Api&P=0&h=180" },
+            { name: "Civil", duration: "4 Years",  image: "https://tse3.mm.bing.net/th?id=OIP.RTOpDmJBgtD6QWUeXt3qcQHaE7&pid=Api&P=0&h=180" },
+            { name: "Chemical", duration: "4 Years",  image: "https://tse4.mm.bing.net/th?id=OIP.0H9uc1fW8Kb6209Hm1FVoAHaE8&pid=Api&P=0&h=180" }
+        ],
+        "MBBS": [
+            { name: "General Medicine", duration: "5.5 Years", image: "https://tse1.mm.bing.net/th?id=OIP.r7hWzoCw6dD93MdJxIVlOQHaCo&pid=Api&P=0&h=180" },
+            { name: "Surgery", duration: "5.5 Years", image: "https://tse4.mm.bing.net/th?id=OIP.bMxBAiF7fS1wJtP4IpeUPQHaE8&pid=Api&P=0&h=180" },
+            { name: "Pediatrics", duration: "5.5 Years", image: "https://tse1.mm.bing.net/th?id=OIP.1gqaeKj2SYbEQ7bVLEkMowHaE8&pid=Api&P=0&h=180" },
+            { name: "Psychiatry", duration: "5.5 Years",  image: "https://tse3.mm.bing.net/th?id=OIP.KtAiXxqXquHa0VXUUqu6agHaEK&pid=Api&P=0&h=180" },
+            { name: "Radiology", duration: "5.5 Years",  image: "https://tse2.mm.bing.net/th?id=OIP.BmSprT_rqZkyLrzZYP3S5AHaHa&pid=Api&P=0&h=180" }
+        ],
+        "Commerce": [
+            { name: "Accounting", duration: "3 Years",  image: "https://tse2.mm.bing.net/th?id=OIP.DmZIi-lLVBbuX2TFt5jN-gHaE3&pid=Api&P=0&h=180" },
+            { name: "Finance", duration: "3 Years",  image: "https://tse2.mm.bing.net/th?id=OIP.kjKAddgesjaQieDhf3CR7gHaFj&pid=Api&P=0&h=180" },
+            { name: "Economics", duration: "3 Years",  image: "https://tse3.mm.bing.net/th?id=OIP.GDljLTzWqIe4cWBaLoUUoAHaE_&pid=Api&P=0&h=180" },
+            { name: "Management", duration: "3 Years", image: "https://tse2.mm.bing.net/th?id=OIP.Mg5zz_aF0iNZJ8kYK_kqGwHaEK&pid=Api&P=0&h=180" },
+            { name: "Marketing", duration: "3 Years",  image: "https://tse1.mm.bing.net/th?id=OIP.VwSFNzcnczTio5XR-fNaVwHaFA&pid=Api&P=0&h=180" }
+        ]
+    };
+
+    const container = document.getElementById("courses-container");
+
+    for (let category in coursesData) {
+        
+        let subheading = document.createElement("div");
+        subheading.classList.add("subheading");
+        subheading.textContent = category;
+        container.appendChild(subheading);
+
+        
+        let courseGrid = document.createElement("div");
+        courseGrid.classList.add("courses-grid");
+
+        
+        coursesData[category].forEach(course => {
+            let courseCard = document.createElement("div");
+            courseCard.classList.add("course-card");
+
+            courseCard.innerHTML = `
+                <img src="${course.image}" alt="${course.name}">
+                <div class="course-title">${course.name}</div>
+                <div class="course-info"><strong>Duration:</strong> ${course.duration}</div>
+                
+            `;
+
+            courseGrid.appendChild(courseCard);
+        });
+
+        container.appendChild(courseGrid);
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore - Career Guidance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            text-decoration: none;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #f4f7fc;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        .header {
+            width: 100%;
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #fff;
+            padding: 20px;
+            background: #007bff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1.2em;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes scrollText {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .section {
+            height: auto;
+            padding: 50px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h1 {
+            font-size: 2.5em;
+            color: #007bff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .images {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .images img {
+            width: 300px;
+            height: 250px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .images img.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .box {
+            background: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .box:hover {
+            background: #007bff;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 1em;
+            margin-top: auto;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll(".section");
+            const images = document.querySelectorAll(".images img");
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            sections.forEach(section => observer.observe(section));
+            images.forEach(img => observer.observe(img));
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <span class="scrolling-text">AI Career Guide</span>
+        <a href="{{ url_for('home1') }}">Home</a>
+    </div>
+    
+    <section id="education" class="section">
+        <h1>Education Roadmaps</h1>
+        <p>Explore various education paths and choose the best one for your career. An education roadmap outlines the academic and skill-building journey for different careers. It helps students navigate courses, degrees, and certifications needed for success. Choosing the right path ensures better career opportunities and personal growth.</p>
+        <div class="images">
+            <img src="https://tse2.mm.bing.net/th?id=OIP.1yJqsdwsixdPDLHdgjcmQAHaEK&pid=Api&P=0&h=180" alt="Education Roadmap 1">
+            <img src="https://tse2.mm.bing.net/th?id=OIP.WKqc5knoxZln0kEntZVzTAHaEK&pid=Api&P=0&h=180" alt="Education Roadmap 2">
+        </div>
+    </section>
+    
+    <section id="exams" class="section">
+        <h1>Entrance Exams Information</h1>
+        <p>Find information about entrance exams and their importance in different career fields. Entrance exams are standardized tests used for admissions into schools, colleges, and professional courses. They assess a candidate’s knowledge, aptitude, and skills for a particular field. Preparing well for these exams increases the chances of securing admission to top institutions.</p>
+        <div class="images">
+            <img src="https://i.ytimg.com/vi/t0MpNz4Y7kk/maxresdefault.jpg" alt="Entrance Exam 1">
+            <img src="https://rukminim1.flixcart.com/image/832/832/book/6/2/9/m-ed-master-of-education-entrance-exam-2017-original-imaesawt7czgyzqv.jpeg?q=70" alt="Entrance Exam 2">
+        </div>
+    </section>
+    
+    <section id="career-paths" class="section">
+        <h1>Career Path Flowcharts</h1>
+        <p>Visualize your career journey with detailed career path flowcharts. A career path is a structured progression of roles that guide individuals toward their professional goals. It involves education, skill-building, and gaining experience to grow in a chosen industry. Making informed decisions and staying adaptable helps in achieving long-term success.</p>
+        <div class="images">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.1gG1yZdDKhJ90vHtDdByQQHaEK&pid=Api&P=0&h=180" alt="Career Flowchart 1">
+            <img src="https://www.slideteam.net/media/catalog/product/cache/960x720/c/a/career_ladder_chart_of_employee_towards_success_newslide1.jpg" alt="Career Flowchart 2">
+        </div>
+    </section>
+    
+    <section class="box">
+        <h2>Important Career Guidance Tools</h2>
+        <p>We offer career guidance tools to help you make informed decisions about your future. Explore career assessments, personality tests, and skill gap analyses to identify your strengths and areas for improvement. These tools are designed to provide personalized career suggestions and help you build a successful path forward.</p>
+    </section>
+    
+    <footer class="footer">
+        <p>&copy; 2025 AI Career Guidance. All rights reserved.</p>
+        <p>For more information, visit <a href="https://www.ai-careerguide.com" target="_blank">AI Career Guide</a></p>
+    </footer>
+</body>
+</html>

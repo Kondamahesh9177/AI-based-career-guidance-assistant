@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guidance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            background: #007bff;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center; /* Align items vertically */
+            justify-content: space-between; /* Space between title and button */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            font-size: 0.9em;
+        }
+        
+        .navbar h1 {
+            color: white;
+            margin: 0;
+            font-size: 20px;
+        }
+        
+        .navbar a {
+            text-decoration: none;
+            background-color: white;
+            color: #007bff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-right: 80px; /* Ensure button stays properly aligned */
+        }
+        
+        .navbar a:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        
+
+        .container {
+            max-width: 500px;
+            background: rgb(229, 228, 228);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 100px auto 20px; /* Adjusted for navbar */
+            box-shadow: 0px 2px 2px 3px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Career Guidance System</h1>
+        <a href="{{ url_for('home1') }}">Home</a>
+
+    </div>
+
+    <div class="container">
+        <h2> Career Guidance System</h2>
+        <form id="careerForm">
+            <input type="text" id="education" placeholder="Enter Education Level (e.g., Bachelor's, Intermediate)" required>
+            <input type="text" id="interest" placeholder="Enter Interest Area (e.g., Engineering, Business)" required>
+            <button type="submit">Get Career Guidance</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("careerForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const education = document.getElementById("education").value;
+            const interest = document.getElementById("interest").value;
+
+            const response = await fetch("/get-career-guidance", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ education_level: education, interest_area: interest })
+            });
+
+            const data = await response.json();
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "";
+
+            if (data.message) {
+                resultDiv.innerHTML = `<p class="error">${data.message}</p>`;
+            } else {
+                let output = "<h3> Career Recommendations:</h3>";
+                data.forEach(item => {
+                    output += `
+                        <div class="card">
+                            <p><strong> Suggested Subjects:</strong> ${item["Suggested Subjects"]}</p>
+                            <p><strong> Recommended Courses:</strong> ${item["Recommended Courses"]}</p>
+                            <p><strong> Career Options:</strong> ${item["Career Options"]}</p>
+                            <p><strong> Govt Job Options:</strong> ${item["Govt Job Options"]}</p>
+                            <p><strong> Business Ideas:</strong> ${item["Business/Startup Ideas"]}</p>
+                            <p><strong> Political Career Paths:</strong> ${item["Political Career Paths"]}</p>
+                        </div>
+                    `;
+                });
+                resultDiv.innerHTML = output;
+            }
+        });
+    </script>
+
+</body>
+</html>

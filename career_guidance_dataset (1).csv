@@ -1,0 +1,13 @@
+Student Level,Interest Area,Suggested Subjects,Recommended Courses,Career Options,Govt Job Options,Business/Startup Ideas,Political Career Paths
+Schooling ,Engineering,"Math, Science","Basics of Programming, Robotics","Mechanical Engineer, Software Developer","ISRO Scientist, PSU Engineer","Tech Startups, Automation",Infrastructure Policies
+Schooling ,Politics,"Civics, History","Public Speaking, Debate Clubs","Political Analyst, Lawyer","Govt Administrator, UPSC","Social Movements, Advocacy",Youth Political Leader
+Schooling ,Business,"Economics, Math","Financial Literacy, Entrepreneurship","Business Consultant, Financial Advisor","RBI, SEBI Officer","E-commerce, Retail","Policy Advisor, Trade Consultant"
+Intermediate ,Engineering,"Physics, Math","JEE, NEET, Entrance Exams","Electrical Engineer, Civil Engineer","DRDO, ONGC Engineer","AI-Based Startups, Tech Innovation",Infrastructure Planning
+Intermediate ,Politics,Political Science,"Law Entrance, Public Policy","Journalist, Social Activist",Government Secretary,Political Party Analyst,"Member of Parliament, Legal Advisor"
+Intermediate ,Business,Business Studies,"CA, BBA Entrance Exam","Chartered Accountant, Investment Banker","CBI, Economic Services","Startups, Stock Market","Economic Policies, Finance Minister"
+Bachelor's (Degree),Engineering,"AI, ML, Robotics","B.Tech, BE, B.Sc (Engg)","AI Engineer, Data Scientist","Railway Engineer, Defense Tech",Deep Tech Companies,Smart City Development
+Bachelor's (Degree),Politics,"Law, IR, Economics","LLB, Political Science","Lawyer, Diplomat, Public Servant","IAS, IPS, IFS",Political Party Member,Election Strategies
+Bachelor's (Degree),Business,"Marketing, Strategy","BBA, MBA Entrance","CEO, Marketing Manager","Govt Banking, SEBI","Digital Business, Startup",Business Law & Trade
+MBA/PG,Engineering,"Data Science, Tech Mgmt","MBA, M.Tech","Research Scientist, CTO","DRDO, Govt R&D",AI & Robotics,Cybersecurity Regulations
+MBA/PG,Politics,"Governance, Law",Public Administration,"Policy Maker, Diplomat",Public Service Commission,International Relations,Political Leadership
+MBA/PG,Business,"Finance, Leadership","MBA in Finance, Marketing","Entrepreneur, CEO","RBI, Finance Ministry","Investment Firms, Global Startups",Economic Reforms
